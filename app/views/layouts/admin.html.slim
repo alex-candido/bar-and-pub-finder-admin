@@ -1,0 +1,18 @@
+doctype html
+html[data-theme="light"]
+  head
+    title BarAndPubFinderAdmin
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag :app, "data-turbo-track": "reload"
+    = stylesheet_link_tag "admin", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  body.m-0
+    = render "layouts/admin/aside"
+    .bar-and-pub-layout-admin
+      = render "layouts/admin/navbar"
+      main  
+        .content.p-10
+          = yield
+    

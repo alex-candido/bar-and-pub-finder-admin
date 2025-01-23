@@ -31,6 +31,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Provides slim generators for rails [https://rubygems.org/gems/slim-rails]
+gem "slim-rails"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -59,6 +62,13 @@ gem "activerecord-postgis-adapter", "~> 10.0.0"
 
 # Geocoder is a gem for geocoding, reverse geocoding,supports multiple providers and integrates with PostGIS for spatial queries
 gem "geocoder", "~> 1.8", ">= 1.8.5"
+
+gem "mapkick-rb"
+
+gem "tailwindcss-rails"
+
+# pin to tailwindcss version 3.4.13
+gem "tailwindcss-ruby", "3.4.13"
 
 
 group :development, :test do

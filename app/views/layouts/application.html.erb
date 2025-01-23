@@ -18,11 +18,27 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/preline"></script>
+    <script>
+    if (!window.Prelined) {
+      window.Prelined = true;
+      document.addEventListener("DOMContentLoaded", function() {
+        if (window.HSStaticMethods && typeof window.HSStaticMethods.autoInit === 'function') {
+          window.HSStaticMethods.autoInit();
+        } else {
+          console.error('Preline não está carregado corretamente.');
+        }
+      });
+    }
+  </script>
   </body>
 </html>

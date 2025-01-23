@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mapkick": "^0.2.6",
+    "preline": "^2.7.0"
+  }
+}

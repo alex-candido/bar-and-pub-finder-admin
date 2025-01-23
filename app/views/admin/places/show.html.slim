@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @place
+
+div
+  => link_to "Edit this place", edit_admin_place_path(@place)
+  '|
+  =< link_to "Back to places", admin_places_path
+
+  = button_to "Destroy this place", @admin_place, method: :delete

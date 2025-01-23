@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1.text-4xl.font-semibold.pb-4 Places
+
+#admin_places
+  - @places.each do |place|
+    == render place
+    p
+      = link_to "Show this place", [:admin, place]
+
+= link_to "New place", new_admin_place_path
