@@ -26,7 +26,7 @@
 class Place < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
-  before_save :update_coords
+  before_save :set_coords
   before_validation :normalize_coordinates
 
   include PlaceGeolocation
@@ -68,7 +68,7 @@ class Place < ApplicationRecord
   }
 
   private
-    def update_coords
+    def set_coords
       self.coords = Geo.point(latitude, longitude) if latitude_changed? || longitude_changed?
     end
 

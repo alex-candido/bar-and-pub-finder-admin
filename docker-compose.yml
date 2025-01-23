@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: barpub_finder
       POSTGRES_PASSWORD: barpub_finder
     ports:
-      - 5434:5432
+      - 5435:5432
 
   adminer:
     image: adminer

@@ -2,8 +2,9 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-import "mapkick/bundle";
 import "preline";
+import "leaflet";
+import "leaflet-providers";
 
 document.addEventListener("turbo:load", function (_event) {
   HSAccordion.autoInit();

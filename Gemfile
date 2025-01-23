@@ -63,8 +63,6 @@ gem "activerecord-postgis-adapter", "~> 10.0.0"
 # Geocoder is a gem for geocoding, reverse geocoding,supports multiple providers and integrates with PostGIS for spatial queries
 gem "geocoder", "~> 1.8", ">= 1.8.5"
 
-gem "mapkick-rb"
-
 gem "tailwindcss-rails"
 
 # pin to tailwindcss version 3.4.13
@@ -91,6 +89,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  # Manage processes in development environments
   gem "foreman"
 
   gem "rubocop-rails", require: false

@@ -2,9 +2,9 @@
 
 require "test_helper"
 
-class Admin::DashboardControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::PlacesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get admin_dashboard_index_url
+    get api_v1_places_index_url
     assert_response :success
   end
 end
