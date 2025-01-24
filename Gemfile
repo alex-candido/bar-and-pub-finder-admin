@@ -47,6 +47,9 @@ gem "thruster", require: false
 # ActiveRecord connection adapter for PostGIS, based on postgresql and rgeo
 gem "activerecord-postgis-adapter", "~> 10.0.0"
 
+# Geocoder is a gem for geocoding, reverse geocoding,supports multiple providers and integrates with PostGIS for spatial queries
+gem "geocoder", "~> 1.8", ">= 1.8.5"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
