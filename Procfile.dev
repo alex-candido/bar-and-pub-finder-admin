@@ -1,0 +1,2 @@
+pg: docker-compose up
+web: bin/rails server
