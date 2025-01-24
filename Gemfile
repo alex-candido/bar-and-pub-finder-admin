@@ -73,7 +73,11 @@ group :development, :test do
   gem "brakeman", require: false
 
   # [https://github.com/bkeepers/dotenv]
-  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+  gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+
+  # [https://github.com/rubocop/rubocop/]
+  gem "rubocop-rails", require: false
+  gem "rubocop-performance", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -82,6 +86,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # [https://github.com/ctran/annotate_models]
+  gem "annotate", "~> 3.2"
 
   #  # Manage processes in development environments
   gem "foreman"
