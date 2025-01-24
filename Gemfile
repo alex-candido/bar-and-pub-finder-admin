@@ -59,11 +59,17 @@ gem "simple_form"
 ## Provides slim generators for rails [https://rubygems.org/gems/slim-rails]
 gem "slim-rails"
 
-# Use ransack for advanced search [https://www.rubydoc.info/gems/ransack/3.2.1]
-gem "ransack", "~> 3.2.1"
+# Use ransack for advanced search
+gem 'ransack', '~> 4.2', '>= 4.2.1'
 
 # [https://github.com/mislav/will_paginate]
 gem "will_paginate", "~> 4.0", ">= 4.0.1"
+
+# [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
+
+# pin to tailwindcss version 3.4.13
+gem "tailwindcss-ruby", "3.4.13"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
