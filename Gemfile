@@ -48,9 +48,22 @@ gem "thruster", require: false
 gem "activerecord-postgis-adapter", "~> 10.0.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
-gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+## Use Authorization with Pundit [https://github.com/varvet/pundit]
+gem "pundit"
+
+# https://github.com/heartcombo/simple_form
+gem "simple_form"
+
+## Provides slim generators for rails [https://rubygems.org/gems/slim-rails]
+gem "slim-rails"
+
+# Use ransack for advanced search [https://www.rubydoc.info/gems/ransack/3.2.1]
+gem "ransack", "~> 3.2.1"
+
+# [https://github.com/mislav/will_paginate]
+gem "will_paginate", "~> 4.0", ">= 4.0.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -58,6 +71,9 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+
+  # [https://github.com/bkeepers/dotenv]
+  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
