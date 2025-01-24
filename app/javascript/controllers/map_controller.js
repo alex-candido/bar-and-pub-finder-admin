@@ -1,6 +1,6 @@
-// app/javascript/controllers/map_controller.js
 import { Controller } from "@hotwired/stimulus";
 import L from "leaflet";
+import "leaflet.markercluster";
 
 export default class extends Controller {
   static targets = ["mapContainer"];
@@ -17,59 +17,79 @@ export default class extends Controller {
       zoom: 12,
       maxBounds: [
         [-90, -180],
-        [90, 180]
+        [90, 180],
       ],
-      maxBoundsViscosity: 1.0
+      maxBoundsViscosity: 1.0,
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19,
-      minZoom: 2,
-      attribution: '© <a href="https://carto.com/attributions">CARTO</a>'
+    L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+      {
+        maxZoom: 19,
+        minZoom: 2,
+        attribution: '© <a href="https://carto.com/attributions">CARTO</a>',
+        opacity: 1.0,
+      },
+    ).addTo(this.map);
+
+    // Inicialize a camada de clustering
+    this.markersLayer = L.markerClusterGroup({
+      // Defina um estilo para o cluster
+      iconCreateFunction: function (cluster) {
+        const markers = cluster.getAllChildMarkers();
+        const count = markers.length;
+        const size = Math.min(40, Math.max(20, count)); // Ajustar o tamanho dependendo da quantidade de marcadores
+        return L.divIcon({
+          html: `<div style="background-color: rgba(0, 123, 255, 0.7); border-radius: 50%; width: ${size}px; height: ${size}px; line-height: ${size}px; text-align: center; color: white; font-weight: bold;">${count}</div>`,
+          className: "leaflet-marker-cluster",
+          iconSize: [size, size],
+        });
+      },
     }).addTo(this.map);
   }
 
   setupEventListeners() {
-    this.map.on('moveend', () => this.loadMarkersWithinBounds());
-    this.map.on('zoomend', () => this.loadMarkersWithinBounds());
+    this.map.on("moveend", () => this.loadMarkersWithinBounds());
+    this.map.on("zoomend", () => this.loadMarkersWithinBounds());
   }
 
   loadMarkersWithinBounds() {
     const bounds = this.map.getBounds();
+    const zoom = this.map.getZoom();
+
+    if (zoom < 10) return;
+
     const northEast = bounds.getNorthEast();
     const southWest = bounds.getSouthWest();
 
-    fetch(`/api/v1/places?ne_lat=${northEast.lat}&ne_lng=${northEast.lng}&sw_lat=${southWest.lat}&sw_lng=${southWest.lng}`)
-      .then(response => response.json())
-      .then(places => {
-        this.clearMarkers();
-        this.addMarkers(places);
+    fetch(
+      `/api/v1/places?ne_lat=${northEast.lat}&ne_lng=${northEast.lng}&sw_lat=${southWest.lat}&sw_lng=${southWest.lng}`,
+    )
+      .then((response) => response.json())
+      .then((places) => {
+        this.clearMarkers(); // Limpar apenas os marcadores
+        this.addMarkers(places); // Adicionar novos marcadores
       })
-      .catch(error => console.error('Erro ao carregar os locais:', error));
+      .catch((error) => console.error("Erro ao carregar os locais:", error));
   }
 
   clearMarkers() {
+    // Limpar apenas os marcadores da camada de clustering
     if (this.markersLayer) {
-      this.map.removeLayer(this.markersLayer);
+      this.markersLayer.clearLayers();
     }
-    this.markersLayer = L.layerGroup().addTo(this.map);
   }
 
-  
   addMarkers(places) {
     places.forEach((place) => {
-      const marker = L.marker([place.latitude, place.longitude]).addTo(this.markersLayer);
+      const marker = L.marker([place.latitude, place.longitude]);
+
+      // Adicionar o marcador à camada de clustering
+      marker.addTo(this.markersLayer);
+
       const popupContent = `
-        <strong>${place.name}</strong><br>
-        <strong>Descrição:</strong> ${place.description}<br>
-        <strong>Tipo:</strong> ${place.type}<br>
-        <strong>Status:</strong> ${place.status}<br>
-        <strong>Endereço:</strong> ${place.info.street_name}, ${place.info.city} - ${place.info.state}, ${place.info.country}<br>
-        <strong>CEP:</strong> ${place.info.zip_code}<br>
-        <strong>Coordenadas:</strong> ${place.latitude}, ${place.longitude}<br>
-        <strong>Criado em:</strong> ${new Date(place.created_at).toLocaleString()}<br>
-        <strong>Atualizado em:</strong> ${new Date(place.updated_at).toLocaleString()}
-      `;
+      <pre>${JSON.stringify(place, null, 2)}</pre>
+    `;
       marker.bindPopup(popupContent);
     });
   }

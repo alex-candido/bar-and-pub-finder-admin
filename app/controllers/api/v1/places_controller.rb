@@ -10,6 +10,6 @@ class Api::V1::PlacesController < Api::BaseController
     @places = Place.g_within_box(
       Geo.point(sw_lat, sw_lng),
       Geo.point(ne_lat, ne_lng)
-    )
+    ).limit(200)
   end
 end
