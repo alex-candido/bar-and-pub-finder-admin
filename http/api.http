@@ -1,0 +1,3 @@
+###
+GET http://localhost:3100/api/v1/places.json?ne_lat=-3.734464116057717&ne_lng=-38.555799722671516&sw_lat=-3.7419476163528196&sw_lng=-38.56524109840394
+Accept: application/json
