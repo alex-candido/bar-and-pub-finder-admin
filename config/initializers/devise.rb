@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '06255ed70dffe10919173ee3634d904bf77bea01f89c4a2ed07aaa8d56f1730b1b745a2c8597c7afafa6deba563d57d483cc46368dc10fd46bbb6ade69c4b706'
+  config.secret_key = Rails.application.credentials.secret_key_base
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -244,7 +244,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -310,4 +310,12 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  #
+  #  config.jwt do |jwt|
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials.jwt_secret
+    jwt.expiration_time = 30.day.to_i
+
+    jwt.request_formats = { user: [ :json ] }
+  end
 end
