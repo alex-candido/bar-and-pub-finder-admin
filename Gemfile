@@ -5,6 +5,8 @@ ruby "3.3.6"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0"
 
+#----------------------------------------------------------------
+
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -44,6 +46,12 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+#----------------------------------------------------------------
+
+# Authentication and Authorization
+gem "devise", "~> 4.9", ">= 4.9.4"
+gem "devise-jwt"
+
 # ActiveRecord connection adapter for PostGIS, based on postgresql and rgeo
 gem "activerecord-postgis-adapter", "~> 10.0.0"
 
@@ -63,7 +71,7 @@ gem "simple_form"
 gem "slim-rails"
 
 # Use ransack for advanced search
-gem 'ransack', '~> 4.2', '>= 4.2.1'
+gem "ransack", "~> 4.2", ">= 4.2.1"
 
 # [https://github.com/mislav/will_paginate]
 gem "will_paginate", "~> 4.0", ">= 4.0.1"
