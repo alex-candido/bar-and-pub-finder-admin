@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.1",
+    "postcss-cli": "^11.0.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^7.0.2",
+    "postcss-nesting": "^13.0.1",
+    "postcss-preset-env": "^10.1.3",
+    "preline": "^2.7.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "scripts": {
+    "build:css:app:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "build:css:admin:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/admin.css -o ./app/assets/builds/admin.css --minify",
+    "build:css:dev": "bun run build:css:app:compile && bun run build:css:admin:compile",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext css --exec \"bun run build:css:dev\""
+  }
+}
