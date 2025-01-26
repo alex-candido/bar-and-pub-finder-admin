@@ -82,6 +82,9 @@ gem "tailwindcss-rails"
 # pin to tailwindcss version 3.4.13
 gem "tailwindcss-ruby", "3.4.13"
 
+# CSS process [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

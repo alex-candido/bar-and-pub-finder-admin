@@ -5,12 +5,18 @@ html[data-theme="light"]
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
- 
-    = stylesheet_link_tag :app, "data-turbo-track": "reload"
+
+    = stylesheet_link_tag :admin, "inter-font", media: 'all', "data-turbo-track": "reload"
     = javascript_importmap_tags
-  body.m-0
-    .fb-layout-admin
-        main
-          .content
-            = yield
-    
+    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true
+  body
+    .layout-admin
+      .layout-admin-container
+        = render "layouts/admin/aside"
+        .layout-admin-content
+          = render "layouts/admin/navbar"
+          main
+            .content
+              = render "layouts/admin/flash"
+              = yield
+            = render "layouts/admin/footer"
