@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+== render @user
+
+div.text-black[class="dark:text-white"]
+  => link_to "Edit this user", edit_admin_user_path(@user)
+  '|
+  =< link_to "Back to users", admin_users_path
+
+  = button_to "Destroy this user", [:admin, @user], method: :delete, data: { "turbo-confirm": "Are you sure?" }
+

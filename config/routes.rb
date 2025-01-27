@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin, class_name: "User"
 
   namespace :admin do
+    resources :users
     resources :dashboard, only: [ :index ]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
