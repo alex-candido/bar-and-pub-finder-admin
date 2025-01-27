@@ -2,7 +2,9 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@preline/theme-switch": "^2.5.2",
     "autoprefixer": "^10.4.20",
+    "lucide-static": "^0.473.0",
     "nodemon": "^3.1.9",
     "postcss": "^8.5.1",
     "postcss-cli": "^11.0.0",
@@ -15,9 +17,7 @@
     "tailwindcss": "^4.0.0"
   },
   "scripts": {
-    "build:css:app:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
-    "build:css:admin:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/admin.css -o ./app/assets/builds/admin.css --minify",
-    "build:css:dev": "bun run build:css:app:compile && bun run build:css:admin:compile",
-    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext css --exec \"bun run build:css:dev\""
+    "watch:css:app:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --watch",
+    "watch:css:admin:compile": "tailwindcss --postcss -c ./config/tailwind.config.js -i ./app/assets/stylesheets/admin.css -o ./app/assets/builds/admin.css --watch"
   }
 }

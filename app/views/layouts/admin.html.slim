@@ -1,5 +1,5 @@
 doctype html
-html[data-theme="light"]
+html
   head
     title Bar And Pub Finder Admin
     meta[name="viewport" content="width=device-width,initial-scale=1"]
@@ -9,7 +9,7 @@ html[data-theme="light"]
     = stylesheet_link_tag :admin, "inter-font", media: 'all', "data-turbo-track": "reload"
     = javascript_importmap_tags
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true
-  body
+  body.bg-gray-50[class="dark:bg-neutral-900" style="zoom: 1;"]
     .layout-admin
       .layout-admin-container
         = render "layouts/admin/aside"

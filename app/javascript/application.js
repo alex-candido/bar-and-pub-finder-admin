@@ -10,4 +10,5 @@ document.addEventListener("turbo:load", function (_event) {
   HSOverlay.autoInit();
   HSSelect.autoInit();
   HSCollapse.autoInit();
+  HSThemeSwitch.autoInit();
 });

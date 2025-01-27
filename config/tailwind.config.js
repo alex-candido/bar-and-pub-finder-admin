@@ -9,10 +9,13 @@ module.exports = {
     "./app/assets/stylesheets/**/*.css",
     "node_modules/preline/dist/*.js",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        nunito: ["Nunito Sans", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        ...defaultTheme.fontFamily.sans,
       },
     },
   },

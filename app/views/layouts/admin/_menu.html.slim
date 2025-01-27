@@ -1,9 +1,11 @@
-nav.fb-layout-admin-aside-menu
-    ul.menu-list
-        ul.menu-lis
+nav.layout-admin-aside-menu
+    nav.menu.hs-accordion-group[data-hs-accordion-always-open='']
+        ul.menu-list
             li.item
-                = link_to root_path, class: 'menu-link' do
+                = link_to root_path, class: 'menu-link bg-gray-100 dark:!bg-neutral-700' do
+                    span.icon
                     span.label Dashboard
             li.item
-                a.menu-link 
-                    label Places
+                = link_to root_path, class: 'menu-link hover:bg-gray-100 dark:hover:bg-neutral-700' do
+                    span.icon
+                    span.label Places
