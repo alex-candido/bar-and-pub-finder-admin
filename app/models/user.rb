@@ -10,10 +10,19 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  username               :string
+#  info                   :jsonb
+#  preferences            :jsonb
+#  role                   :integer          default(0), not null
+#  status                 :integer          default(0), not null
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  enum role: { registered: 0, admin: 1, editor: 3  }
+  enum status: { active: 0, inactive: 1 }
 end
