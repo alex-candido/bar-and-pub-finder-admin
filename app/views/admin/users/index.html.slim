@@ -1,0 +1,13 @@
+= render "breadcrumb"
+
+p style="color: green" = notice
+
+h1.text-2xl.mb-4.text-black[class="dark:text-white"] Users
+
+#users.text-black[class="dark:text-white"]
+  - @users.each do |user|
+    == render user
+    p
+      = link_to "Show this user", admin_user_path(user)
+
+  = link_to "New user", new_admin_user_path

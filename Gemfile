@@ -95,6 +95,12 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
+  #[https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
+
+  #[https://github.com/faker-ruby/faker]
+  gem "faker"
+
   # [https://github.com/bkeepers/dotenv]
   gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
 
