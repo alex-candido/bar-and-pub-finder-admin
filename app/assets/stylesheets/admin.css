@@ -1,10 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
+  html,
+  body {
+    @apply relative bg-white text-base font-poppins font-normal overflow-hidden;
+  }
+
+  :root {
+    --aside-width: 16.25rem;
+    --navbar-height: 3.5rem;
+    --footer-height: 3.875rem;
+  }
+
   .layout-admin {
-    @apply bg-pink-500;
+    .layout-admin-container {
+      @apply flex h-[100vh] w-full;
+    }
+    .layout-admin-content {
+      @apply flex flex-auto flex-col ml-auto lg:max-w-[calc(100%-var(--aside-width))];
+      main {
+        @apply flex-1 overflow-y-auto overflow-x-hidden sm:pl-0;
+        .content {
+          @apply min-h-[calc(100%-var(--footer-height))];
+        }
+      }
+    }
   }
 }
 
+@layer components {
+  .layout-admin-aside {
+    .aside {
+      @apply relative flex flex-col h-full max-h-full;
+    }
+    .aside-brand {
+      .brand-link {
+        @apply flex gap-1 font-semibold text-xl items-center;
+      }
+    }
+    .aside-container {
+      @apply h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
+    }
+    .hs-accordion-group {
+      @apply p-3 w-full flex flex-col flex-wrap;
+    }
+  }
+
+  .layout-admin-aside-menu {
+    .menu {
+      @apply p-3 w-full flex flex-col flex-wrap;
+    }
+    .menu-list {
+      @apply flex flex-col space-y-1;
+    }
+    .menu-link {
+      @apply flex items-center gap-x-3.5 py-2 px-2.5 text-base text-gray-800 rounded-lg focus:outline-none focus:bg-gray-100 dark:text-white;
+    }
+  }
+
+  .layout-admin-navbar {
+    .navbar {
+      @apply sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 lg:ps-[calc(-1*var(--aside-width))] dark:bg-neutral-800 dark:border-neutral-700;
+    }
+    .content {
+      @apply flex basis-full items-center w-full mx-auto;
+    }
+    .brand-link {
+      @apply flex gap-1 font-semibold text-xl items-center focus:outline-none focus:opacity-80;
+    }
+    .navbar-menu {
+      @apply w-full flex items-center justify-end ms-auto gap-x-1 md:justify-between md:gap-x-3;
+      .navbar-start {
+        @apply hidden md:block;
+        .input-group {
+          .left-field {
+            @apply absolute inset-y-0 start-0 flex items-center pointer-events-none z-20;
+          }
+          .text-input {
+            @apply py-2 ps-10 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600;
+          }
+          .right-close {
+            @apply hidden absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-1;
+            .button-close {
+              @apply inline-flex shrink-0 justify-center items-center size-6 rounded-full text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500;
+            }
+          }
+          .right-command {
+            @apply absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-3 text-gray-400;
+          }
+        }
+      }
+      .navbar-end {
+        @apply flex flex-row items-center justify-end gap-2;
+        .nav-search {
+          @apply md:hidden size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700;
+        }
+        .nav-notifications {
+          @apply size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700;
+        }
+      }
+    }
+  }
+
+  .layout-admin-dropdown-menu {
+    .dropdown {
+      @apply relative inline-flex;
+    }
+    .dropdown-account {
+      @apply size-[38px] focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-700 dark:border-neutral-700 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border text-gray-800;
+    }
+    .dropdown-menu {
+      .account-info {
+        @apply py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700;
+      }
+      .menu-link {
+        @apply flex items-center py-2 px-3 rounded-lg text-sm text-gray-800 gap-x-3.5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300;
+      }
+    }
+  }
+
+  .breadcrumb {
+    @apply sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden dark:bg-neutral-800 dark:border-neutral-700;
+    .breadcrumb-content {
+      @apply flex items-center py-2;
+    }
+    .breadcrumb-trigger {
+      @apply size-8 flex justify-center items-center gap-x-2 border border-gray-200 text-gray-800 hover:text-gray-500 rounded-lg focus:outline-none focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-500 dark:focus:text-neutral-500 dark:focus:bg-neutral-700;
+    }
+    .breadcrumb-list {
+      @apply ms-3 flex items-center whitespace-nowrap;
+      .breadcrumb-layout {
+        @apply flex items-center text-sm text-gray-800 dark:text-neutral-400;
+      }
+      .breadcrumb-page {
+        @apply text-sm font-semibold text-gray-800 truncate dark:text-neutral-400;
+      }
+      .chevron-right {
+        @apply shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-neutral-500;
+      }
+    }
+  }
+  .logo {
+    .icon-background {
+      @apply fill-black dark:fill-white;
+    }
+    .icon-map {
+      @apply fill-white dark:fill-black;
+    }
+  }
+}
+
+@layer utilities {
+}
