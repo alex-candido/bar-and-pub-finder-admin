@@ -1,10 +1,25 @@
-h1 Editing user
+= render "breadcrumb"
 
-== render "form", user: @user
+#users.section
+  .flex.flex-col
+      .p-1.5.min-w-full.inline-block.align-middle
+        = simple_form_for([:admin, @user], html: { class: "form" }) do |f|
+          .card
+            .card-header
+              .header-title
+                h2.leading Editing User
+                p.support-text Edit and more.
 
-br
-
-div.text-black[class="dark:text-white"]
-  => link_to "Show this user", admin_user_path(@user)
-  '|
-  =< link_to "Back to users", admin_users_path
+            .card-content
+              .inline-block.min-w-full.align-middle.py-5.px-6
+                == render "form", f: f
+            .card-footer
+              .footer-content
+                .footer-left
+                .footer-right
+                    .pagination.inline-flex.gap-x-2
+                        =< link_to admin_users_path, class: "btn-base" do
+                          = inline_svg_tag "chevron-left.svg"
+                          | Go back
+                        => link_to "Show this user", admin_user_path(@user), class: "btn-base"
+                        = f.submit "Edit User", class: "btn-primary"

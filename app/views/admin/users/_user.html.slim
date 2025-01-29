@@ -1,22 +1,39 @@
-div.text-black[class="dark:text-white" id="#{dom_id user}"]
-  p
-    strong Name:
-    =< user.name
-  p
-    strong Username:
-    =< user.username
-  p
-    strong Email:
-    =< user.email
-  p
-    strong Info:
-    =< user.info
-  p
-    strong Preferences:
-    =< user.preferences
-  p
-    strong Role:
-    =< user.role
-  p
-    strong Status:
-    =< user.status
+.details[id="#{dom_id user}"]
+  .details-content
+    .field-item
+      .field-label
+        span.label Name:
+      .field-value
+        .value = user.name
+    .field-item
+      .field-label
+        span.label Username:
+      .field-value
+        .value = user.username
+    .field-item
+      .field-label
+        span.label Email:
+      .field-value
+        .value = user.email
+    hr.border-gray-200.dark:border-neutral-700[class="-mx-6"]
+    .field-item
+      .field-label
+        span.label Info:
+      pre.field-value
+        code.value = JSON.pretty_generate(user.info)
+    .field-item
+      .field-label
+        span.label Preferences:
+      .field-value
+        .value = user.preferences
+    hr.border-gray-200.dark:border-neutral-700[class="-mx-6"]
+    .field-item
+      .field-label
+        span.label Role:
+      .field-value
+        .value = user.role
+    .field-item
+      .field-label
+        span.label Status:
+      .field-value
+        .value = user.status

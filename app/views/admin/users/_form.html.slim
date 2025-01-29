@@ -1,15 +1,46 @@
-= simple_form_for([:admin, @user]) do |f| 
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs.text-black[class="dark:text-white"]
-    = f.input :name
-    = f.input :username
-    = f.input :email
-    = f.input :info
-    = f.input :preferences
-    = f.input :role
-    = f.input :status
-
-  .form-actions.text-black[class="dark:text-white"]
-    = f.button :submit
+.form-inputs
+  .form-content
+    - if f.object.errors.any?
+      .field-item
+        .field-label
+          .label
+        .field-value
+          = f.error_notification
+          = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+    .field-item
+      .field-label
+        .label Name:
+      .field-value
+        = f.input :name, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Username:
+      .field-value
+        = f.input :username, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Email:
+      .field-value
+        = f.input :email, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    hr.border-gray-200.dark:border-neutral-700[class="-mx-6"]
+    .field-item
+      .field-label
+        .label Info:
+      .field-value
+        = f.input :info, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Preferences:
+      .field-value
+        = f.input :preferences, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    hr.border-gray-200.dark:border-neutral-700[class="-mx-6"]
+    .field-item
+      .field-label
+        .label Role:
+      .field-value
+        = f.input :role, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Status:
+      .field-value
+        = f.input :status, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }

@@ -14,8 +14,8 @@
 #  username               :string
 #  info                   :jsonb
 #  preferences            :jsonb
-#  role                   :integer          default(0), not null
-#  status                 :integer          default(0), not null
+#  role                   :integer          default("registered"), not null
+#  status                 :integer          default("active"), not null
 #
 require "test_helper"
 

@@ -21,7 +21,7 @@ rails-credentials
     EDITOR=nano bin/rails credentials:edit
     rails secret
     ex:
-        secret_key_base: 2915043d0a68256dc39b28df9033b8cf0be33dff6773674ac767617afa4b>
-        jwt_secret: d19afa4e86eb6481f12f8fc77e964ea651a6bf2618aa4d4ddc6cd6b8b3206de69>
+        secret_key_base: d7e4a2453f07738672243283761f0b119f7d8d5f983b3dab80aec81aaac5f1697a0803da9c4a02b7896efcdee16dc0751f57347a471143e33b5c8e82de1264c0
+        jwt_secret: f1891900cab8ac3b6291076e52c4eb80d5785c6d99e6ab084c5e21a7f563c0cac97d4e62b7f9ecf7fd2559cf177e90cfddd7e4320f9f44b3a5336f0c1d9bb7d4
 
 
