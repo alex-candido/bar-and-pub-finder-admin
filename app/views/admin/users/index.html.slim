@@ -1,13 +1,104 @@
 = render "breadcrumb"
 
-p style="color: green" = notice
+#users.section
+  .flex.flex-col
+      .p-1.5.min-w-full.inline-block.align-middle
+        .card
+          .card-header
+            .header-title
+              h2.leading Users
+              p.support-text Add users, edit and more.
+            .header-actions
+              .inline-flex.gap-x-2
+                .btn-base
+                  | View all
+                .filter-action
+                  = render "filter"
+                .new-action
+                  = link_to new_admin_user_path, class: 'btn-primary' do
+                    = inline_svg_tag "add.svg", class: 'shrink-0 size-4'
+                    span Add user
+          .card-content.relative.overflow-x-auto
+            .inline-block.min-w-full.align-middle
+              table.table
+                thead.thead-wrap
+                  tr
+                    th.ps-6.py-3[scope="col"]
+                      label.flex[for="hs-at-with-checkboxes-main"]
+                        input#hs-at-with-checkboxes-main.checkbox[type="checkbox"]
+                        span.sr-only
+                          | Checkbox
+                    th.th-wrap.text-start[scope="col" class="ps-6.lg:ps-3.xl:ps-0.pe-6.py-3"]
+                      .wrap
+                        span.label Id
+                    th.th-wrap[scope="col" class="ps-6.lg:ps-3.xl:ps-0.pe-6.py-3"]
+                      .wrap
+                        span.label Email
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label Name
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label Username
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label Role
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label Status
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label created At
+                    th.th-wrap.text-end[scope="col" class="px-6 py-3"]
+                      .wrap
+                          span.label Action
+                tbody.tbody-wrap[class="divide-y divide-gray-200 dark:divide-neutral-700"]
+                  - @users.each do |user|
+                    tr
+                      td.td-wrap
+                        .ps-6.py-3
+                          label.flex[for="hs-at-with-checkboxes-1"]
+                            input#hs-at-with-checkboxes-1.checkbox[type="checkbox"]
+                            span.sr-only
+                              | Checkbox
+                      td.td-wrap.text-start
+                        .wrap
+                          span.label = user.id
+                      td.td-wrap
+                        .wrap
+                          = link_to user.email, [:admin, user], class: "link-action"
+                      td.td-wrap
+                        .wrap
+                          span.label = user.name
+                      td.td-wrap
+                        .wrap
+                          span.label= user.username
+                      td.td-wrap
+                        .wrap
+                          span.label = user.role
+                      td.td-wrap
+                        .wrap
+                          span.label= user.status
+                      td.td-wrap
+                        .wrap
+                          span.label = user.created_at.strftime("%d/%m/%Y %H:%M")
+                      td.td-wrap[class="px-6"]
+                          .button.text-start
+                            = link_to "Edit", edit_admin_user_path(user), class: "link-action"
+          .card-footer
+            .footer-content
+              .footer-left
+                p.result-label[class="text-base text-gray-600 dark:text-neutral-400"]
+                  span.font-semibold.text-gray-800.dark:text-neutral-200 = @users.count
+                  | &nbsp;results
+              .footer-right
+                  .pagination
+                    button[type="button" class="btn-base"]
+                      = inline_svg_tag "chevron-left.svg"
+                      | Prev
+                    button[type="button" class="btn-base"]
+                      | Next
+                      = inline_svg_tag "chevron-right.svg"
 
-h1.text-2xl.mb-4.text-black[class="dark:text-white"] Users
 
-#users.text-black[class="dark:text-white"]
-  - @users.each do |user|
-    == render user
-    p
-      = link_to "Show this user", admin_user_path(user)
 
-  = link_to "New user", new_admin_user_path

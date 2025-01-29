@@ -1,0 +1,35 @@
+.admin-auth
+    .brand.py-4.px-6.flex.justify-center
+      div[class="flex gap-1 font-semibold text-xl items-center no-underline"]
+        = inline_svg_tag "logo.svg", class: 'icon-logo'
+        span.font-poppins.text-gray-800[class="dark:text-white"] pubfinder
+    .card
+      .card-header.text-center
+        .header-title.w-full
+          h2[class="block text-center text-2xl font-semibold text-gray-800 dark:text-white"] Sign up
+      .card-content.pt-5.pb-3.px-6
+        .content
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "grid gap-y-4" }) do |f|
+            = render "devise/shared/error_messages", resource: resource
+            .field
+              = f.label :email, class: 'input-label'
+              .control.is-clearfix
+                = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-base', placeholder: "Enter your email"
+
+            .field
+              = f.label :password, class: 'input-label'
+              - if @minimum_password_length
+                span[class="text-sm text-gray-600 dark:text-neutral-400 mb-2"] = "(#{@minimum_password_length} characters minimum)"
+              .control.is-clearfix
+                = f.password_field :password, autocomplete: "new-password", class: 'input-base',  placeholder: "Enter your password"
+
+            .field
+              = f.label :password_confirmation, class: 'input-label'
+              .control.is-clearfix
+                = f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-base', placeholder: "Confirm your password"
+
+            .actions
+              = f.submit "Sign up", class: "button btn-primary w-full cursor-pointer "
+      .card-footer.pb-5.px-6.space-y-2
+          = render "devise/shared/links"
+

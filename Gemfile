@@ -86,7 +86,7 @@ gem "tailwindcss-ruby", "3.4.13"
 gem "cssbundling-rails"
 
 # [https://github.com/jamesmartin/inline_svg]
-gem 'inline_svg'
+gem "inline_svg"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -95,10 +95,10 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
-  #[https://github.com/thoughtbot/factory_bot_rails]
+  # [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails"
 
-  #[https://github.com/faker-ruby/faker]
+  # [https://github.com/faker-ruby/faker]
   gem "faker"
 
   # [https://github.com/bkeepers/dotenv]

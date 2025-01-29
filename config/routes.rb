@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admin, class_name: "User"
+  devise_for :admin, class_name: "User", singular: :admin
 
   namespace :admin do
     resources :users

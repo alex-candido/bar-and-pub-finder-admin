@@ -1,11 +1,25 @@
-p style="color: green" = notice
+= render "breadcrumb"
 
-== render @user
+#users.section
+  .flex.flex-col
+      .p-1.5.min-w-full.inline-block.align-middle
+        .card
+          .card-header
+            .header-title
+              h2.leading User Details
+              p.support-text Details and more.
 
-div.text-black[class="dark:text-white"]
-  => link_to "Edit this user", edit_admin_user_path(@user)
-  '|
-  =< link_to "Back to users", admin_users_path
-
-  = button_to "Destroy this user", [:admin, @user], method: :delete, data: { "turbo-confirm": "Are you sure?" }
+          .card-content
+            .inline-block.min-w-full.align-middle.py-5.px-6
+              == render @user
+          .card-footer
+            .footer-content
+              .footer-left
+              .footer-right
+                  .pagination.inline-flex.gap-x-2
+                    =< link_to admin_users_path, class: "btn-base" do
+                      = inline_svg_tag "chevron-left.svg"
+                      | Go back
+                    = button_to "Destroy", [:admin, @user], method: :delete, data: { "turbo-confirm": "Are you sure?" }, class: "btn-base"
+                    => link_to "Edit this user", edit_admin_user_path(@user), class: "btn-base"
 
