@@ -1,0 +1,22 @@
+.layout-admin-dropdown-menu
+    .dropdown.hs-dropdown[class='[--placement:bottom-right]']
+        button#hs-dropdown-account.dropdown-account[type='button' aria-haspopup='menu' aria-expanded='false' aria-label='Dropdown']
+            .shrink-0.rounded-full
+                = inline_svg_tag "account.svg", class: 'account'
+        .hs-dropdown-menu.dropdown-menu.duration.opacity-0.min-w-60.bg-white.shadow-md.rounded-lg.mt-2.block(class='transition-[opacity,margin] invisible hs-dropdown-open:visible hs-dropdown-open:opacity-100 hs-dropdown-open:opacity-100 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full' role='menu' aria-orientation='vertical' aria-labelledby='hs-dropdown-account' style='position: fixed; inset: 0px 0px auto auto; margin: 0px; transform: translate(-24px, 58px);' data-popper-placement='bottom-end')
+            .dropdown-account-info
+                p.text-sm.text-gray-500(class='dark:text-neutral-500') Signed in as
+                p.text-sm.font-medium.text-gray-800(class='dark:text-neutral-200') = current_admin.email
+            .dropdown-item(class='px-1.5 pt-1.5 pb-0 space-y-0.5')
+                = link_to edit_admin_user_path(current_admin), class: 'menu-link hover:bg-gray-100 dark:hover:bg-neutral-700' do
+                    = inline_svg_tag "user.svg", class: 'user size-4'
+                    |                   My Account
+            .dropdown-item(class='px-1.5 pt-1.5 pb-0 space-y-0.5')
+                = link_to edit_admin_registration_path, class: 'menu-link hover:bg-gray-100 dark:hover:bg-neutral-700' do
+                    = inline_svg_tag "lock.svg", class: 'settings size-4'
+                    |                   Change Password
+            .dropdown-item(class='p-1.5 space-y-0.5')
+                = button_to destroy_admin_session_path, method: :delete, data: { turbo: false }, class: 'menu-link w-full hover:bg-gray-100 dark:hover:bg-neutral-700' do
+                    = inline_svg_tag "log-out.svg", class: 'log-out size-4'
+                    |                   Sign Out
+

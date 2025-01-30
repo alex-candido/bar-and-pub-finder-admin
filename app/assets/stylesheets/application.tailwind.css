@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Input Element Classes */
+@layer components {
+  .input-label {
+    @apply block font-semibold text-sm mb-2 dark:text-white;
+  }
+  .input-base {
+    @apply py-2 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600 text-gray-600 dark:text-neutral-400;
+  }
+}
+
+/* Checkbox Element Classes */
+@layer components {
+  .checkbox {
+    @apply shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800;
+  }
+}
+
+/* Button Element Classes */
+@layer components {
+  .btn-base {
+    @apply cursor-pointer text-nowrap py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700;
+  }
+  .btn-primary {
+    @apply text-nowrap py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-danger {
+    @apply text-nowrap py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-red-500 text-red-500 hover:border-red-400 hover:text-red-400 focus:outline-none focus:border-red-400 focus:text-red-400 disabled:opacity-50 disabled:pointer-events-none;
+  }
+}
+
+/* Icon Element Classes */
+@layer components {
+  .icon-logo {
+    .icon-background {
+      @apply fill-gray-800 dark:fill-white;
+    }
+    .icon-map {
+      @apply fill-white dark:fill-gray-800;
+    }
+  }
+}
+
+
+/* Navigation Component Classes */
+@layer components {
+  .link-action {
+    @apply text-nowrap inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500;
+  }
+}

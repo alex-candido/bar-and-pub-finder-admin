@@ -1,11 +1,20 @@
 source "https://rubygems.org"
 
+ruby "3.3.6"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 7.2.0"
+
+#----------------------------------------------------------------
+
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 2.1"
+
+# Use pg as the database for Active Record
+gem "pg"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -37,8 +46,47 @@ gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
+#----------------------------------------------------------------
+
+# Authentication and Authorization
+gem "devise", "~> 4.9", ">= 4.9.4"
+gem "devise-jwt"
+
+# ActiveRecord connection adapter for PostGIS, based on postgresql and rgeo
+gem "activerecord-postgis-adapter", "~> 10.0.0"
+
+# Geocoder is a gem for geocoding, reverse geocoding,supports multiple providers and integrates with PostGIS for spatial queries
+gem "geocoder", "~> 1.8", ">= 1.8.5"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+
+## Use Authorization with Pundit [https://github.com/varvet/pundit]
+gem "pundit"
+
+# https://github.com/heartcombo/simple_form
+gem "simple_form"
+
+## Provides slim generators for rails [https://rubygems.org/gems/slim-rails]
+gem "slim-rails"
+
+# Use ransack for advanced search
+gem "ransack", "~> 4.2", ">= 4.2.1"
+
+# [https://github.com/mislav/will_paginate]
+gem "will_paginate", "~> 4.0", ">= 4.0.1"
+
+# [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
+
+# pin to tailwindcss version 3.4.13
+gem "tailwindcss-ruby", "3.4.13"
+
+# CSS process [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+
+# [https://github.com/jamesmartin/inline_svg]
+gem "inline_svg"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -47,6 +95,19 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
+  # [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
+
+  # [https://github.com/faker-ruby/faker]
+  gem "faker"
+
+  # [https://github.com/bkeepers/dotenv]
+  gem "dotenv-rails", "~> 2.1", ">= 2.1.1"
+
+  # [https://github.com/rubocop/rubocop/]
+  gem "rubocop-rails", require: false
+  gem "rubocop-performance", require: false
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
@@ -54,6 +115,12 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # [https://github.com/ctran/annotate_models]
+  gem "annotate", "~> 3.2"
+
+  #  # Manage processes in development environments
+  gem "foreman"
 end
 
 group :test do

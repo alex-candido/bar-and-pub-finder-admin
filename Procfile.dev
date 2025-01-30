@@ -1,0 +1,4 @@
+pg: docker-compose up
+web: bin/rails server
+css_app: bun run watch:css:app:compile
+css_admin: bun run watch:css:admin:compile

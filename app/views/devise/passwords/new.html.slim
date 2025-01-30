@@ -1,0 +1,23 @@
+.admin-auth
+    .brand.py-4.px-6.flex.justify-center
+      div[class="flex gap-1 font-semibold text-xl items-center no-underline"]
+        = inline_svg_tag "logo.svg", class: 'icon-logo'
+        span.font-poppins.text-gray-800[class="dark:text-white"] pubfinder
+    .card
+      .card-header.text-center
+        .header-title.w-full
+          h2[class="block text-center text-2xl font-semibold text-gray-800 dark:text-white"] Forgot your password?
+      .card-content.pt-5.pb-3.px-6
+        .content
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "grid gap-y-4" }) do |f|
+            = render "devise/shared/error_messages", resource: resource
+
+            .field
+              = f.label :email, class: 'input-label block text-sm mb-2 dark:text-white'
+              .control.is-clearfix
+                = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-base', placeholder: "Enter your email"
+
+            .actions
+              = f.submit "Send me reset password instructions", class: "button btn-primary w-full cursor-pointer "
+      .card-footer.pb-5.px-6.space-y-3
+            = render "devise/shared/links"

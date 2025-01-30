@@ -1,0 +1,45 @@
+.layout-admin-navbar
+    header.navbar
+      nav.navbar-content.px-4[class='sm:px-6']
+        .navbar-brand.me-5[class='lg:me-0 lg:hidden']
+          = link_to admin_dashboard_index_path, class: 'brand-link flex gap-1 font-semibold text-xl items-center focus:outline-none focus:opacity-80' do
+            = inline_svg_tag "logo.svg", class: 'icon-logo'
+            span.font-poppins.text-black[class="dark:text-white"] pubfinder
+        .navbar-menu
+            .navbar-start
+              .navbar-item.relative
+                .input-group
+                  .input-left[class='ps-3.5']
+                    = inline_svg_tag "search.svg", class: 'search'
+                  input.input-base(type='text' placeholder='Search' class="ps-10")
+                  .field-close
+                    button.button-close[type="button" aria-label="Close"]
+                      span.sr-only
+                        | Close
+                      = inline_svg_tag "circle-x.svg", class: 'circle-x size-3'
+                  .field-command
+                    = inline_svg_tag "command.svg", class: 'command size-3'
+                    span.mx-1
+                      = inline_svg_tag "plus.svg", class: 'plus'
+                    span.text-xs
+                      | /
+            .navbar-end
+              .navbar-item
+                button.button-nav-search(type='button')
+                  = inline_svg_tag "search.svg", class: 'search'
+                  span.sr-only Search
+              .navbar-item
+                .nav-theme-switch
+                  button.moon-mode.hs-dark-mode.inline-flex.items-center.gap-x-2.rounded-full.text-sm.text-gray-800[type="button" data-hs-theme-click-value="dark" class="hs-dark-mode-active:hidden bg-white hover:bg-gray-100 border shadow-sm focus:outline-none focus:bg-white/20 p-[0.6rem]"]
+                    = inline_svg_tag "sun.svg", class: 'sun'
+                  button.sun-mode.hs-dark-mode.hidden.inline-flex.items-center.gap-x-2.rounded-full.text-sm.text-white[type="button" data-hs-theme-click-value="light" class='hs-dark-mode-active:inline-flex border shadow-sm dark:bg-neutral-800 dark:border-neutral-700 hover:bg-white/20 focus:outline-none focus:bg-white/20 dark:hover:bg-neutral-700 p-[0.6rem]']
+                    = inline_svg_tag "moon.svg", class: 'moon'
+              .navbar-item
+                .navbar-dropdown
+                  = render "layouts/admin/dropdown_menu"
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="relative h-[max-content] h-full">
   <head>
     <title><%= content_for(:title) || "Bar And Pub Finder Admin" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,11 +18,22 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag :app, media: 'all', "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module", defer: true  %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-gray-100 flex h-full min-h-[100vh] items-center py-16 dark:bg-neutral-800">
+    <div class="nav-theme-switch absolute top-[2%] right-[2%]">
+      <button type="button" class="moon-mode hs-dark-mode inline-flex items-center gap-x-2 rounded-full text-sm text-gray-800 bg-white hover:bg-gray-100 border shadow-sm focus:outline-none focus:bg-white/20 p-[0.6rem] hs-dark-mode-active:hidden" data-hs-theme-click-value="dark">
+        <%= inline_svg_tag "sun.svg", class: 'sun' %>
+      </button>
+      <button type="button"class="sun-mode hs-dark-mode hidden inline-flex items-center gap-x-2 rounded-full text-sm text-white border shadow-sm dark:bg-neutral-800 dark:border-neutral-700 hover:bg-white/20 focus:outline-none focus:bg-white/20 dark:hover:bg-neutral-700 p-[0.6rem] hs-dark-mode-active:inline-flex" data-hs-theme-click-value="light">
+        <%= inline_svg_tag "moon.svg", class: 'moon'%>
+      </button>
+    </div>
+    <main class="w-full max-w-md mx-auto p-6">
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,0 +1,14 @@
+.breadcrumb.border-t-0
+    .breadcrumb-content
+        button.breadcrumb-trigger[type='button' class='' aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-application-sidebar" aria-label="Toggle navigation" data-hs-overlay="#hs-application-sidebar"]
+          span.sr-only Toggle Navigation
+          .icon
+            = inline_svg_tag "panel-left-open.svg", class: 'panel-left-open'
+        ol.breadcrumb-list
+          li.breadcrumb-base
+            | Application Layout
+            .icon
+              = inline_svg_tag "chevron-right.svg", class: 'chevron-right mx-3 shrink-0 overflow-visible size-2.5 text-gray-400 dark:text-neutral-500'
+          li.breadcrumb-item[aria-current='page']
+            | Dashboard
+

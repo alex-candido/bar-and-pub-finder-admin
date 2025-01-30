@@ -1,0 +1,15 @@
+nav.layout-admin-aside-menu
+    nav.menu.hs-accordion-group[data-hs-accordion-always-open='' class="p-3 w-full flex flex-col flex-wrap"]
+        ul.menu-list[class="flex flex-col space-y-1"]
+            li.item
+                = link_to root_path, class: "menu-link hover:bg-gray-100 dark:hover:bg-neutral-700 #{'bg-gray-100 dark:!bg-neutral-700' if current_page?(root_path)}"
+                    = inline_svg_tag "house.svg", class: 'house size-4'
+                    span.label Dashboard
+            li.item
+                a.[class='menu-link hover:bg-gray-100 dark:hover:bg-neutral-700' ]
+                    = inline_svg_tag "map-pin-house.svg", class: 'map-pin-house size-4'
+                    span.label Places
+            li.item
+                = link_to admin_users_path, class: "menu-link hover:bg-gray-100 dark:hover:bg-neutral-700 #{'bg-gray-100 dark:!bg-neutral-700' if current_page?(admin_users_path)}" do
+                    = inline_svg_tag "users.svg", class: 'users size-4'
+                    span.label Users
