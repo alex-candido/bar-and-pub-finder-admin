@@ -1,19 +1,23 @@
-div id="#{dom_id place}"
-  p
-    strong Name:
-    =< place.name
-  p
-    strong Description:
-    =< place.description
-  p
-    strong Info:
-    =< place.info
-  p
-    strong Latitude:
-    =< place.latitude
-  p
-    strong Longitude:
-    =< place.longitude
-  p
-    strong Coords:
-    =< place.coords
+.details[id="#{dom_id place}"]
+  .details-content
+    .field-item
+      .field-label
+        span.label Name:
+      .field-value
+        .value = place.name
+    .field-item
+      .field-label
+        span.label Description:
+      .field-value
+        .value = place.description
+    hr.border-gray-200.dark:border-neutral-700[class="-mx-6"]
+    .field-item
+      .field-label
+        span.label Info:
+      pre.field-value.highlight
+        code.value = JSON.pretty_generate(place.info)
+    .field-item
+      .field-label
+        span.label Coordinates:
+      .field-value
+        .value = "#{place.latitude}, #{place.longitude}"

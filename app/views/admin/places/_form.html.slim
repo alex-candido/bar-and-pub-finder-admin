@@ -1,14 +1,34 @@
-= simple_form_for(@place) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :name
-    = f.input :description
-    = f.input :info
-    = f.input :latitude
-    = f.input :longitude
-    = f.input :coords
-
-  .form-actions
-    = f.button :submit
+.form-inputs
+  .form-content
+    - if f.object.errors.any?
+      .field-item
+        .field-label
+          .label
+        .field-value
+          = f.error_notification
+          = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+    .field-item
+      .field-label
+        .label Name:
+      .field-value
+        = f.input :name, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Description:
+      .field-value
+        = f.input :description, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Info:
+      .field-value
+        = f.input :info, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Latitude:
+      .field-value
+        = f.input :latitude, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }
+    .field-item
+      .field-label
+        .label Longitude:
+      .field-value
+        = f.input :longitude, label: false, wrapper_html: { class: "field-wrapper" }, input_html: { class: "input-base" }

@@ -37,6 +37,14 @@ class Place < ApplicationRecord
     (obj.latitude_changed? || obj.longitude_changed?)
   }
 
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(name status type)
+  end
+
   private
     def set_coords
       self.coords = Geo.point(latitude, longitude) if latitude_changed? || longitude_changed?

@@ -1,10 +1,25 @@
-p style="color: green" = notice
+= render "breadcrumb"
 
-== render @place
+#places.section
+  .flex.flex-col
+      .p-1.5.min-w-full.inline-block.align-middle
+        .card
+          .card-header
+            .header-title
+              h2.leading Place Details
+              p.support-text Details and more.
+          .card-content
+              .inline-block.min-w-full.align-middle.py-5.px-6
+                == render @place
+          .card-footer
+            .footer-content
+              .footer-left
+              .footer-right
+                  .action-buttons.inline-flex.gap-x-2
+                    =< link_to admin_places_path, class: "btn-base" do
+                      = inline_svg_tag "chevron-left.svg"
+                      | Go back
+                    = button_to "Destroy", [:admin, @place], method: :delete, data: { "turbo-confirm": "Are you sure?" }, class: "btn-base"
+                    => link_to "Edit this place", edit_admin_place_path(@place), class: "btn-base"
 
-div
-  => link_to "Edit this place", edit_place_path(@place)
-  '|
-  =< link_to "Back to places", places_path
 
-  = button_to "Destroy this place", @place, method: :delete

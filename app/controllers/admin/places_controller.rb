@@ -3,7 +3,8 @@ class Admin::PlacesController < Admin::BaseController
 
   # GET /places or /places.json
   def index
-    @places = Place.all
+    @q = Place.ransack(params[:q])
+    @places = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /places/1 or /places/1.json

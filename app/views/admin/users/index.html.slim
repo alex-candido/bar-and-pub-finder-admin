@@ -10,16 +10,14 @@
               p.support-text Add users, edit and more.
             .header-actions
               .inline-flex.gap-x-2
-                .btn-base
-                  | View all
-                .filter-action
-                  = render "filter"
                 .new-action
                   = link_to new_admin_user_path, class: 'btn-primary' do
                     = inline_svg_tag "add.svg", class: 'shrink-0 size-4'
                     span Add user
-          .card-content.relative.overflow-x-auto
-            .inline-block.min-w-full.align-middle
+          .card-filters
+              = render "filter"
+          .card-content
+            .card-content-wrap
               table.table
                 thead.thead-wrap
                   tr
@@ -48,7 +46,10 @@
                           span.label Status
                     th.th-wrap[scope="col"]
                       .wrap
-                          span.label created At
+                          span.label Created At
+                    th.th-wrap[scope="col"]
+                      .wrap
+                          span.label Updated At
                     th.th-wrap.text-end[scope="col" class="px-6 py-3"]
                       .wrap
                           span.label Action
@@ -58,7 +59,7 @@
                       td.td-wrap
                         .ps-6.py-3
                           label.flex[for="hs-at-with-checkboxes-1"]
-                            input#hs-at-with-checkboxes-1.checkbox[type="checkbox"]
+                            = check_box_tag "users_ids[]", user.id, class: "hs-at-with-checkboxes-1 checkbox"
                             span.sr-only
                               | Checkbox
                       td.td-wrap.text-start
@@ -82,6 +83,9 @@
                       td.td-wrap
                         .wrap
                           span.label = user.created_at.strftime("%d/%m/%Y %H:%M")
+                      td.td-wrap
+                        .wrap
+                          span.label = user.updated_at.strftime("%d/%m/%Y %H:%M")
                       td.td-wrap[class="px-6"]
                           .button.text-start
                             = link_to "Edit", edit_admin_user_path(user), class: "link-action"
@@ -93,12 +97,7 @@
                   | &nbsp;results
               .footer-right
                   .pagination
-                    button[type="button" class="btn-base"]
-                      = inline_svg_tag "chevron-left.svg"
-                      | Prev
-                    button[type="button" class="btn-base"]
-                      | Next
-                      = inline_svg_tag "chevron-right.svg"
+                    = will_paginate @places, previous_label: inline_svg_tag("chevron-left.svg"), next_label: inline_svg_tag("chevron-right.svg"), container: false
 
 
 

@@ -5,6 +5,7 @@ import "controllers";
 import "preline";
 
 document.addEventListener("turbo:load", function (_event) {
+  HSStaticMethods.autoInit();
   HSAccordion.autoInit();
   HSDropdown.autoInit();
   HSOverlay.autoInit();

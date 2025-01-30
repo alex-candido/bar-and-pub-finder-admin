@@ -1,8 +1,25 @@
-h1 New place
+= render "breadcrumb"
 
-== render "form", place: @place
+#places.section
+  .flex.flex-col
+      .p-1.5.min-w-full.inline-block.align-middle
+        = simple_form_for([:admin, @place], html: { class: "form" }) do |f|
+          .card
+            .card-header
+              .header-title
+                h2.leading New PLace
+                p.support-text New and more.
 
-br
-
-div
-  = link_to "Back to places", places_path
+            .card-content
+              .inline-block.min-w-full.align-middle.py-5.px-6
+                == render "form", f: f
+            
+            .card-footer
+              .footer-content
+                .footer-left
+                .footer-right
+                    .action-buttons.inline-flex.gap-x-2
+                      =< link_to admin_places_path, class: "btn-base" do
+                          = inline_svg_tag "chevron-left.svg"
+                          | Go back
+                      = f.submit "Create Place", class: "btn-primary"
