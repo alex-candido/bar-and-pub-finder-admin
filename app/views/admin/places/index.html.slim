@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Places
+
+#places
+  - @places.each do |place|
+    == render place
+    p
+      = link_to "Show this place", place
+
+= link_to "New place", new_place_path

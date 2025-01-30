@@ -10,6 +10,7 @@ users:
 places:
     rails g migration AddPostgisExtensionToDatabase
     rails g model Place name:string description:text info:json latitude:float longitude:float coords:point type:integer status:integer
+    rails g scaffold_controller Admin::Places name:string description:text info:json latitude:float longitude:float coords:point --template-engine=slim
 
 
 pundit:
