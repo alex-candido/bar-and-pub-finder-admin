@@ -8,7 +8,8 @@ users:
     rails g scaffold_controller Admin::Users name:string username:string email:string info:json preferences:json role:integer status:integer --template-engine=slim
 
 places:
-    rails g migration AddColumnsToUsers name:string username:string info:json preferences:jsonb role:integer status:integer
+    rails g migration AddPostgisExtensionToDatabase
+    rails g model Place name:string description:text info:json latitude:float longitude:float coords:point type:integer status:integer
 
 
 pundit:
