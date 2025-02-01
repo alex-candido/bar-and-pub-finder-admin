@@ -1,21 +1,31 @@
-.hs-dropdown.relative.inline-block[class="[--placement:bottom-right]"]
-    button#hs-as-table-table-filter-dropdown[type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"]
-        = inline_svg_tag "list-filter.svg", class: 'list-filter'
-        |  Filter
-        span[class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-xs font-medium border border-gray-300 text-gray-800 dark:border-neutral-700 dark:text-neutral-300"]
-            |  2
-    .hs-dropdown-menu[role="menu" aria-orientation="vertical" aria-labelledby="hs-as-table-table-filter-dropdown" class=" transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 divide-y divide-gray-200 min-w-48 z-20 bg-white shadow-md rounded-lg mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700 hidden"]
-        .divide-y.divide-gray-200.dark:divide-neutral-700
-        label.flex.py-2.5.px-3[for="hs-as-filters-dropdown-frequency"]
-            input#hs-as-filters-dropdown-frequency.shrink-0.mt-0.5.border-gray-300.rounded.text-blue-600.focus:ring-blue-500.disabled:opacity-50.disabled:pointer-events-none.dark:bg-neutral-900.dark:border-neutral-600.dark:checked:bg-blue-500.dark:checked:border-blue-500.dark:focus:ring-offset-gray-800[type="checkbox" checked]
-            span.ms-3.text-sm.text-gray-800.dark:text-neutral-200
-                | Role
-        label.flex.py-2.5.px-3[for="hs-as-filters-dropdown-status"]
-            input#hs-as-filters-dropdown-status.shrink-0.mt-0.5.border-gray-300.rounded.text-blue-600.focus:ring-blue-500.disabled:opacity-50.disabled:pointer-events-none.dark:bg-neutral-900.dark:border-neutral-600.dark:checked:bg-blue-500.dark:checked:border-blue-500.dark:focus:ring-offset-gray-800[type="checkbox" checked]
-            span.ms-3.text-sm.text-gray-800.dark:text-neutral-200
-                | Status
-        label.flex.py-2.5.px-3[for="hs-as-filters-dropdown-created"]
-            input#hs-as-filters-dropdown-created.shrink-0.mt-0.5.border-gray-300.rounded.text-blue-600.focus:ring-blue-500.disabled:opacity-50.disabled:pointer-events-none.dark:bg-neutral-900.dark:border-neutral-600.dark:checked:bg-blue-500.dark:checked:border-blue-500.dark:focus:ring-offset-gray-800[type="checkbox"]
-            span.ms-3.text-sm.text-gray-800.dark:text-neutral-200
-                | Created
+= search_form_for @q, url: admin_users_path, builder: SimpleForm::FormBuilder, html: { class: '' } do |f|
+  .layout-admin-form.flex.gap-2.flex-wrap
+    .form-inputs[class="grid gap-2 sm:grid-cols-2 md:grid-cols-4"]
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Name or Username
+          .field-value
+            = f.input :name_or_username_cont, label: false, placeholder: "Enter name or username", input_html: { class: "input-base w-44" }
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Email
+          .field-value
+            = f.input :email_cont, label: false, placeholder: "Enter email", input_html: { class: "input-base w-44" }
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Status
+          .field-value
+            = f.input :status_eq, label: false, collection: User.statuses, prompt: "Select Status", input_html: { class: "hs-select"}
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Role
+          .field-value
+            = f.input :role_eq, label: false, collection: User.roles, prompt: "Select Role", input_html: { class: "hs-select" }
 
+
+    .form-actions.mt-auto
+      = f.submit "View all", class: "btn-primary cursor-pointer"

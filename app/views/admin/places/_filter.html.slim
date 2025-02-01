@@ -1,0 +1,24 @@
+= search_form_for @q, url: admin_places_path, builder: SimpleForm::FormBuilder, html: { class: '' } do |f|
+  .layout-admin-form.flex.gap-2.flex-wrap
+    .form-inputs.flex.gap-2
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Name
+          .field-value
+            = f.input :name_cont, label: false, placeholder: "Enter name", input_html: { class: "input-base w-44" }
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Type
+          .field-value
+            = f.input :type_eq, label: false, collection: Place.types, prompt: "Select Type", input_html: { class: "hs-select" }
+      .form-content
+        .field-item.flex.flex-col
+          .field-label.text-start.text-sm.font-semibold.text-gray-800.dark:text-neutral-200
+            | Status
+          .field-value
+            = f.input :status_eq, label: false, collection: Place.statuses, prompt: "Select Status", input_html: { class: "hs-select"}
+
+    .form-actions.mt-auto
+      = f.submit "View all", class: "btn-primary cursor-pointer"

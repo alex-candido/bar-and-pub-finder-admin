@@ -25,4 +25,12 @@ class User < ApplicationRecord
 
   enum role: { registered: 0, admin: 1, editor: 3  }
   enum status: { active: 0, inactive: 1 }
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(email name username role status)
+  end
 end

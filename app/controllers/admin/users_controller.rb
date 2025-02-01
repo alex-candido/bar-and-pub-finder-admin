@@ -3,8 +3,10 @@ class Admin::UsersController < Admin::BaseController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 15)
   end
+
 
   # GET /users/1 or /users/1.json
   def show

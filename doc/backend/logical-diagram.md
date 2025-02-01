@@ -37,7 +37,9 @@ Table User {
   name varchar(255)
   username varchar(255) 
   email varchar(255)
+
   info json [null]
+  preferences json [null]
 
   role Role [default: "REGISTERED"]
   status Status [default: "ACTIVE"]
